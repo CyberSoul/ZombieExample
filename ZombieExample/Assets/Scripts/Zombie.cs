@@ -8,7 +8,8 @@ public class Zombie : MonoBehaviour
     CapsuleCollider capsuleCollider;
     Animator animator;
     MovementAnimator movementAnimator;
-    bool dead;
+    public bool dead;
+    public float DiedTime;
 
     NavMeshAgent navMeshAgent;
     Player player;
@@ -45,7 +46,7 @@ public class Zombie : MonoBehaviour
             Destroy(navMeshAgent);
             GetComponentInChildren<ParticleSystem>().Play();
             animator.SetTrigger("died");
-            Destroy(gameObject, 5);//Remove object after 5 seconds.
+            Destroy(gameObject, DiedTime);//Remove object after N seconds.
         }
     }
 }
